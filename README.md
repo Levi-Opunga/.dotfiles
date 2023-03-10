@@ -1,6 +1,6 @@
 # Dotfiles
 
-This as repository for my dot files
+This is a repository for my dot files
 
 ## Dependencies
 
