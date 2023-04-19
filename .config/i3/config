@@ -272,5 +272,5 @@ bindsym $mod+bracketright exec lightadjust +
 # bindsym XF86MonBrightnessDown exec light brightnessctl set 5%-
 
 
-exec --no-startup-id sleep 3 &amp;&amp; xfce4-power-manager
+exec_always --no-startup-id sleep 3 &amp;&amp; xfce4-power-manager
 

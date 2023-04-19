@@ -140,3 +140,4 @@ export PATH="$HOME/.jbang/bin:$PATH"
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/bashrc.post.bash" ]] && builtin source "$HOME/.fig/shell/bashrc.post.bash"
+PATH=~/.console-ninja/.bin:$PATH

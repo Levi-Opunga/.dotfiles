@@ -298,7 +298,7 @@ alias ugm='~/go/bin/ugm'
 #"/home/login/.jbang/bin:/home/login/.local/bin:/home/login/.opam/default/bin:/home/login/perl5/bin:/home/login/.jbang/bin:/home/login/.local/bin:/home/login/.opam/default/bin:/home/login/perl5/bin:/home/login/.jbang/bin:/home/login/.local/bin:/home/login/.cabal/bin:/home/login/.ghcup/bin:/home/login/.opam/default/bin:/home/login/anaconda3/bin:/home/login/anaconda3/condabin:/home/login/.sdkman/candidates/springboot/current/bin:/home/login/.sdkman/candidates/kotlin/current/bin:/home/login/.sdkman/candidates/java/current/bin:/home/login/.nvm/versions/node/v18.13.0/bin:/home/login/perl5/bin:/home/login/.cargo/bin:/home/login/.local/bin:/opt/maven/bin:/home/login/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local/ssl/bin:/snap/bin:/home/login/.dotnet/tools:/usr/local/go/bin:/home/login/.local/share/JetBrains/Toolbox/scripts:/usr/local/go/bin:/usr/local/go/bin:/usr/local/go/bin"
 
 
-export  PATH="/home/login/.jbang/bin /home/login/.local/bin /home/login/.opam/default/bin /home/login/perl5/bin /home/login/.jbang/bin /home/login/.local/bin /home/login/.opam/default/bin /home/login/perl5/bin /home/login/.jbang/bin /home/login/.local/bin /home/login/.cabal/bin /home/login/.ghcup/bin /home/login/.opam/default/bin /home/login/anaconda3/bin /home/login/anaconda3/condabin /home/login/.sdkman/candidates/springboot/current/bin /home/login/.sdkman/candidates/kotlin/current/bin /home/login/.sdkman/candidates/java/current/bin /home/login/.nvm/versions/node/v18.13.0/bin /home/login/perl5/bin /home/login/.cargo/bin /home/login/.local/bin /opt/maven/bin /home/login/.nix-profile/bin /nix/var/nix/profiles/default/bin /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin /usr/games /usr/local/games /snap/bin /usr/local/ssl/bin /snap/bin /home/login/.dotnet/tools /usr/local/go/bin /home/login/.local/share/JetBrains/Toolbox/scripts /usr/local/go/bin /usr/local/go/bin /usr/local/go/bin:$PATH"
+export  PATH="/home/login/.jbang/bin /home/login/.local/bin /home/login/.opam/default/bin /home/login/perl5/bin /home/login/.jbang/bin /home/login/.local/bin /home/login/.opam/default/bin /home/login/perl5/bin /home/login/.jbang/bin /home/login/.local/bin /home/login/.cabal/bin /home/login/.ghcup/bin /home/login/.opam/default/bin /home/login/anaconda3/bin /home/login/anaconda3/condabin /home/login/.sdkman/candidates/springboot/current/bin /home/login/.sdkman/candidates/kotlin/current/bin /home/login/.sdkman/candidates/java/current/bin /home/login/.nvm/versions/node/v18.13.0/bin /home/login/perl5/bin /home/login/.cargo/bin /home/login/.local/bin /opt/maven/bin /home/login/.nix-profile/bin /nix/var/nix/profiles/default/bin /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin /usr/games /usr/local/games /snap/bin /usr/local/ssl/bin /snap/bin /home/login/.dotnet/tools /usr/local/go/bin /home/login/.local/share/JetBrains/Toolbox/scripts /usr/local/go/bin /usr/local/go/bin /usr/local/go/bin:$PATH:/home/login/.sdkman/candidates/kotlin/current/bin/kotlinc-jvm"
 
 
 # study stream aliases
@@ -325,6 +325,18 @@ pomodoro () {
 
 alias wo="pomodoro 'Work'"
 alias br="pomodoro 'Break'"
+
+usegradleV(){
+ gradle wrapper --gradle-version $1 --distribution-type all
+}
+
+getPid(){
+  ps aux | grep $1
+}
+
+onPort(){
+sudo lsof -i -P -n | grep :$1 
+}
 
 loudTimer(){
   clear
@@ -373,9 +385,12 @@ alias icat="kitty +kitten icat"
 alias clip="kitty +kitten clipboard --get-clipboard"
 
 alias cls=clear
+own(){ 
+nohup $1 & 
+}
 
 alias ls="logo-ls" 
-
+alias myeditor="java -jar /home/login/TextEditor/build/libs/TextEditor-2.0-SNAPSHOT.jar"
 
 # [[ ! -r /home/login/.opam/opam-init/init.zsh ]] || source /home/login/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 

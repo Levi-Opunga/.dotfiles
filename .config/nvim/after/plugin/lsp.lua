@@ -56,6 +56,10 @@ local luasnip = require("luasnip")
 local lspkind = require("lspkind")
 
 lsp.setup_nvim_cmp({
+    preselect = "none",
+    completion = {
+        completeopt = 'menu,menuone,noinsert,noselect'
+    },
     sources = {
         {
             name = "path",
@@ -86,11 +90,8 @@ lsp.setup_nvim_cmp({
     mapping = cmp.mapping.preset.insert({
         ["<C-d>"] = cmp.mapping.scroll_docs( -4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<CR>"] = cmp.mapping.confirm({ select = false }),
         ["<C-Space>"] = cmp.mapping.complete(),
-        ["<CR>"] = cmp.mapping.confirm({
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
-        }),
         ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
@@ -160,11 +161,11 @@ lsp.setup_nvim_cmp({
             -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
             before = function(entry, vim_item)
                 local source_mapping = {
-                    buffer = "[Buffer]",
-                    nvim_lsp = "[LSP]",
-                    nvim_lua = "[Lua]",
-                    cmp_tabnine = "[TN]",
-                    path = "[Path]",
+                    buffer = "",
+                    nvim_lsp = "",
+                    nvim_lua = "",
+                    cmp_tabnine = "",
+                    path = "/",
                 }
                 local menu_icon = {
                     nvim_lsp = "λ",

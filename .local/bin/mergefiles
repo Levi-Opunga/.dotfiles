@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# Get the paths to the two directories to compare
+echo "Enter path to first directory: "
+read dir1
+echo "Enter path to second directory: "
+read dir2
+
+# Create a new directory to hold the merged files
+echo "Enter path to directory to store merged files: "
+read merge_dir
+mkdir -p "$merge_dir"
+
+# Loop through the files in the first directory
+for file1 in "$dir1"/*
+do
+  # Get the filename without the directory path
+  filename1=$(basename "$file1")
+  
+  # Loop through the files in the second directory
+  for file2 in "$dir2"/*
+  do
+    # Get the filename without the directory path
+    filename2=$(basename "$file2")
+    
+    # Check if the filenames match
+    if [[ "$filename1" == "$filename2" ]]; then
+      # If the filenames match, compare the contents of the files
+      if cmp -s "$file1" "$file2"; then
+        # If the contents match, copy one of the files to the merge directory
+        cp "$file1" "$merge_dir"
+      fi
+    fi
+  done
+done
