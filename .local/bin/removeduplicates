@@ -1,0 +1,44 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+  echo "Usage: $0 <directory>"
+  exit 1
+fi
+
+directory=$1
+
+if [ ! -d "$directory" ]; then
+  echo "Error: $directory is not a directory"
+  exit 1
+fi
+
+declare -A seen_checksums
+
+# Recursive function to find duplicate files
+find_duplicates() {
+  local dir="$1"
+
+  # Loop through all files in the directory
+  for file in "$dir"/*; do
+    if [ -f "$file" ]; then
+      # Get the checksum of the file
+      checksum=$(md5sum "$file" | cut -d' ' -f1)
+
+      # Check if the checksum has been seen before
+      if [ ${seen_checksums[$checksum]+_} ]; then
+        # Duplicate file found
+        echo "Duplicate file: $file"
+        rm "$file"
+      else
+        # Add checksum to list of seen checksums
+        seen_checksums[$checksum]=1
+      fi
+    elif [ -d "$file" ]; then
+      # Recursively search subdirectory
+      find_duplicates "$file"
+    fi
+  done
+}
+
+find_duplicates "$directory"
+

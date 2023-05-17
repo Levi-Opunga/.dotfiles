@@ -390,8 +390,10 @@ nohup $1 &
 }
 
 alias ls="logo-ls" 
-alias myeditor="java -jar /home/login/TextEditor/build/libs/TextEditor-2.0-SNAPSHOT.jar"
-
+myeditor(){
+  java -jar /home/login/TextEditor/build/libs/TextEditor-2.0-SNAPSHOT.jar "`realpath $1`"  
+}
+ 
 # [[ ! -r /home/login/.opam/opam-init/init.zsh ]] || source /home/login/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 
 

@@ -1,0 +1,32 @@
+#!/bin/bash
+
+if [ $# -ne 2 ]; then
+  echo "Usage: $0 <file> <string_to_remove>"
+  exit 1
+fi
+
+file=$1
+string_to_remove=$2
+
+if [ ! -f "$file" ]; then
+  echo "Error: $file does not exist"
+  exit 1
+fi
+
+# Split the file name and extension
+filename=$(basename -- "$file")
+extension="${filename##*.}"
+filename="${filename%.*}"
+
+# Remove the string from the file name
+new_filename="${filename/$string_to_remove/}"
+
+# Rename the file
+if [ -n "$extension" ]; then
+  mv "$file" "${new_filename}.${extension}"
+else
+  mv "$file" "$new_filename"
+fi
+
+echo "File renamed to: $new_filename.${extension}"
+

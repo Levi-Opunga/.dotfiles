@@ -1,10 +1,8 @@
 #!/bin/bash
 
 # Get the paths to the two directories to compare
-echo "Enter path to first directory: "
-read dir1
-echo "Enter path to second directory: "
-read dir2
+dir1=$1
+dir2=$2
 
 # Create a new directory to hold the merged files
 echo "Enter path to directory to store merged files: "

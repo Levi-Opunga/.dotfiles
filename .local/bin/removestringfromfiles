@@ -1,0 +1,47 @@
+#!/bin/bash
+
+if [ $# -ne 2 ]; then
+  echo "Usage: $0 <directory> <string_to_remove>"
+  exit 1
+fi
+
+directory=$1
+string_to_remove=$2
+
+if [ ! -d "$directory" ]; then
+  echo "Error: $directory is not a directory"
+  exit 1
+fi
+
+# Recursive function to rename files
+rename_files() {
+  local dir="$1"
+
+  # Loop through all files in the directory
+  for file in "$dir"/*; do
+    if [ -f "$file" ]; then
+      # Split the file name and extension
+      filename=$(basename -- "$file")
+      extension="${filename##*.}"
+      filename="${filename%.*}"
+
+      # Remove the string from the file name
+      new_filename="${filename/$string_to_remove/}"
+
+      # Rename the file
+      if [ -n "$extension" ]; then
+        mv "$file" "${dir}/${new_filename}.${extension}"
+      else
+        mv "$file" "${dir}/${new_filename}"
+      fi
+
+      echo "File renamed: ${dir}/${new_filename}.${extension}"
+    elif [ -d "$file" ]; then
+      # Recursively rename files in subdirectory
+      rename_files "$file"
+    fi
+  done
+}
+
+rename_files "$directory"
+

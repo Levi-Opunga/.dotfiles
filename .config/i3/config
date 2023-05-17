@@ -47,6 +47,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec kitty # default i3-sensible-terminal
+bindsym $mod+t exec alacritty # default i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -153,6 +154,7 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
+bindsym $mod+Shift+w exec "~/.config/polybar/material/scripts/pywal.sh /home/login/snap/wonderwall/39/.local/share/ktechpit/WonderWall/download/"
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -180,16 +182,19 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+bindsym $mod+n exec nautilus
 
-
-
+bindsym $mod+Shift+d diodon
 
 # Autostart applications
-exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+#exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 exec --no-startup-id nm-applet
 # exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
-exec --no-startup-id clipit
+exec --no-startup-id diodon
+exec --no-startup-id transmission-gtk
+exec --no-startup-id slack
+
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 exec_always --no-startup-id $HOME/.config/polybar/i3wmthemer_bar_launch.sh
@@ -218,15 +223,17 @@ client.background #2f2f38
 # set power-manager and volume control
 exec --no-startup-id mate-power-manager
 
-
+ 
 # touchpad on and off controller on laptop with Fn+<touchpad control functional key>
 bindsym XF86TouchpadOn exec --no-startup-id synclient Touchpadoff=0
 bindsym XF86TouchpadOff exec --no-startup-id synclient Touchpadoff=1
 
-
+ 
 #exec_always feh --bg-fill /home/login/Pictures/BingWallpaper/20230101-NorwayNYD_ROW8949601778_UHD.jpg
-
-exec_always ~/.config/polybar/material/scripts/pywal.sh ./Pictures/./BingWallpaper
+#NOTE: CHANGE WALLPAPER SOURCE
+#exec_always ~/.config/polybar/material/scripts/pywal.sh ./Pictures/./BingWallpaper
+#exec_always ~/.config/polybar/material/scripts/pywal.sh /home/login/snap/bing-wall/26/.local/share/org.keshavnrj.ubuntu/BingWall/downloaded
+exec_always ~/.config/polybar/material/scripts/pywal.sh /home/login/snap/wonderwall/39/.local/share/ktechpit/WonderWall/download/
 
 exec_always ~/.config/polybar/launch.sh --material
 
