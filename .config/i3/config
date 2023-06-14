@@ -261,7 +261,9 @@ gaps bottom 35
 
 # My Bindings
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+bindsym $mod+b  exec --no-startup-id brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+bindsym $mod+Shift+b exec --no-startup-id brightnessctl set 5%-
 bindsym $mod+o exec rofi -show emoji -modi emoji
 bindsym $mod+c exec google-chrome
 bindsym $mod+g exec gnome-control-center

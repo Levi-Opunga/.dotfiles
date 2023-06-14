@@ -197,7 +197,7 @@ alias zshrc="${=EDITOR} ~/.zshrc"
 alias nvimrc="cd ~/.config/nvim/;
 nvim ."
 
-
+alias pn=pnpm 
 
 
 alias pojo="/home/login/Documents/devDocs/jsonschema2pojo-1.1.1/bin/jsonschema2pojo"
@@ -408,3 +408,11 @@ export PATH="$HOME/gems/bin:$PATH"
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
+
+# pnpm
+export PNPM_HOME="/home/login/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
