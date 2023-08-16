@@ -1,0 +1,5 @@
+# Automatically generated
+# duptype id depth size device inode priority name
+DUPTYPE_FIRST_OCCURRENCE 1 0 451 66306 5533846 3 one/one.txt
+DUPTYPE_OUTSIDE_TREE -1 0 451 66306 5533858 4 two/one.txt
+# end of file

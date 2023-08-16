@@ -208,8 +208,8 @@ alias neoColor="~/colorfetch.sh"
 
 alias ants="/home/login/Pictures/ascii/tunel.sh"
 
-alias antsColor="/home/login/Pictures/ascii/tunel.sh|lolcat-c"
-
+alias antColor="/home/login/Pictures/ascii/tunel.sh|lolcat-c"
+alias bar=".config/polybar/launch.sh --material" 
 
 PATH="/home/login/perl5/bin${PATH:+:${PATH}}"; export PATH;
 
@@ -232,6 +232,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 source <(ng completion script)
 
+export PATH="$PATH:/home/login/Android/Sdk/tools"
 
 
 
@@ -291,7 +292,7 @@ alias confetty="~/go/bin/confetty"
 alias gambit="~/go/bin/gambit"
 
 alias ugm='~/go/bin/ugm'
-
+alias focus='~/Documents/focus/focus'
 #eval "$(oh-my-posh init zsh)"
 
 
@@ -336,6 +337,10 @@ getPid(){
 
 onPort(){
 sudo lsof -i -P -n | grep :$1 
+}
+
+killPort(){
+   kill -9 $(lsof -t -i:$1)   
 }
 
 loudTimer(){
@@ -416,3 +421,14 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+###-begin-ionic-completion-###
+
+if type compdef &>/dev/null; then
+  __ionic() {
+    compadd -- $(ionic completion -- "${words[@]}" 2>/dev/null)
+  }
+
+  compdef __ionic ionic
+fi
+
+###-end-ionic-completion-###

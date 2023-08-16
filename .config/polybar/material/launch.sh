@@ -11,7 +11,10 @@ killall -q polybar
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Launch the bar
-MONITOR=DP-1 
+# MONITOR=DP-1 
 polybar -q main -c "$DIR"/config.ini &
-MONITOR=eDP-1 
-polybar -q second -c "$DIR"/config.ini
+# MONITOR=eDP-1 
+polybar -q second -c "$DIR"/config.ini &
+
+polybar -q third -c "$DIR"/config.ini &
+

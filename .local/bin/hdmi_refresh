@@ -1,0 +1,29 @@
+#!/bin/bash
+
+string1="mirror"
+
+
+if [ "$1" == "home" ]; then
+
+  xrandr --output HDMI-1 --auto --right-of eDP-1 --mode 1920x1080
+  xrandr --output DP-1 --auto --right-of eDP-1 --mode 1920x1080 
+  i3-msg restart
+
+elif [ "$1" == "$string1" ]; then
+
+ xrandr --output HDMI-1 --auto --scale-from 1920x1080   --output eDP-1
+ xrandr --output DP-1 --auto --scale-from 1920x1080 --output eDP-1
+ i3-msg restart
+
+elif [ "$1" == "fallback" ]; then
+  
+ xrandr --output HDMI-1 --auto --scale-from 1680x1050   --output eDP-1
+ xrandr --output DP-1 --auto --scale-from 1680x1050   --output eDP-1
+ i3-msg restart
+
+else  
+  
+ xrandr --auto
+ i3-msg restart
+
+fi
