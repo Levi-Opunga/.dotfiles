@@ -140,4 +140,4 @@ export PATH="$HOME/.jbang/bin:$PATH"
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/bashrc.post.bash" ]] && builtin source "$HOME/.fig/shell/bashrc.post.bash"
-PATH=~/.console-ninja/.bin:$PATH
+PATH=~/.console-ninja/.bin:$PATHsource '/home/login/.nvm/versions/node/v18.13.0/lib/node_modules/@hyperupcall/autoenv/activate.sh'

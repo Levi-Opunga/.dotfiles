@@ -99,8 +99,10 @@ require("lvim.lsp.manager").setup("rust_analyzer")
 -- -- make sure server will always be installed even if the server is in skipped_servers list
 lvim.lsp.installer.setup.ensure_installed = {
   "jsonls",
+  "tsserver",
   "kotlin_language_server",
   "jdtls",
+  "angularls",
   "rust_analyzer",
   "lua_ls"
 }
@@ -173,12 +175,13 @@ lvim.lsp.installer.setup.ensure_installed = {
 -- }
 
 -- Additional Plugins
--- lvim.plugins = {
---     {
---       "folke/trouble.nvim",
---       cmd = "TroubleToggle",
---     },
--- }
+lvim.plugins = {
+  {
+    "folke/trouble.nvim",
+    cmd = "TroubleToggle",
+  },
+  { "nvim-treesitter/nvim-treesitter-angular" }
+}
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- vim.api.nvim_create_autocmd("BufEnter", {

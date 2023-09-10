@@ -46,14 +46,16 @@ bindsym Shift+Print exec --no-startup-id flameshot launcher
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec kitty # default i3-sensible-terminal
-bindsym $mod+t exec alacritty # default i3-sensible-terminal
+bindsym $mod+Return exec  alacritty # default i3-sensible-terminal
+bindsym $mod+t exec alacritty kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons
+
+bindsym $mod+Shift+a exec --no-startup-id rofi -show run -show-icons
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -240,7 +242,7 @@ exec_always ~/.config/polybar/material/scripts/pywal.sh /home/login/snap/wonderw
 exec_always ~/.config/polybar/launch.sh --material
 exec --no-startup-id /var/lib/flatpak/exports/bin/com.slack.Slack
 exec picom
-exec /opt/pastey/bin/Pastey
+exec /opt/syncthing/syncthing --no-browser
 
 #for_window [class="^.*"] border pixel
 #default_border pixel 1
@@ -282,5 +284,4 @@ bindsym $mod+bracketright exec lightadjust +
 # bindsym XF86MonBrightnessDown exec light brightnessctl set 5%-
 
 
-exec_always --no-startup-id sleep 3 &amp;&amp; xfce4-power-manager
 

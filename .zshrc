@@ -19,6 +19,10 @@ fi
 export ZSH="$HOME/.oh-my-zsh"
 export EDITOR='nvim'
 
+# NOTE:: DOTENV SETUP
+ZSH_DOTENV_FILE=.dotenv
+ZSH_DOTENV_PROMPT=false
+# in ~/.zshrc, before Oh My Zsh is sourced:
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -85,26 +89,8 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git
-  npm
-  
-web-search
-ubuntu
- sdk
- nvm
- mvn
-  colorize
- emoji-clock
- copyfile
- copypath
- aliases
- alias-finder
- yarn 
- zsh-interactive-cd
-charm
- zsh-syntax-highlighting
-  zsh-autosuggestions)
+# Add wisely, as too many plugins slow down shell startup. zsh-interactive-cd 
+plugins=(git npm dotenv web-search ubuntu sdk rust nvm mvn colorize emoji-clock copyfile copypath aliases alias-finder yarn charm zsh-syntax-highlighting zsh-autosuggestions)
 
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 source $ZSH/oh-my-zsh.sh
@@ -209,7 +195,7 @@ alias neoColor="~/colorfetch.sh"
 alias ants="/home/login/Pictures/ascii/tunel.sh"
 
 alias antColor="/home/login/Pictures/ascii/tunel.sh|lolcat-c"
-alias bar=".config/polybar/launch.sh --material" 
+alias bar="~/.config/polybar/launch.sh --material" 
 
 PATH="/home/login/perl5/bin${PATH:+:${PATH}}"; export PATH;
 
@@ -407,6 +393,10 @@ myeditor(){
  [[ ! -r /home/login/.opam/opam-init/init.zsh ]] || source /home/login/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 
 
+export OB_HOME=~/Documents/Obsidian/Productivity/Productivity/
+ 
+export PATH="$HOME/.nvm/versions/node/v16.18.1/bin/tsserver:$HOME/.nvm/versions/node/v16.18.1/bin/svelteserver:$PATH"
+
 # Install Ruby Gems to ~/gems
 export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
@@ -432,3 +422,21 @@ if type compdef &>/dev/null; then
 fi
 
 ###-end-ionic-completion-###
+
+eval $(opam env)
+AUTOENV_PRESERVE_CD='yes'
+AUTOENV_ENV_FILENAME='.env.auto'
+AUTOENV_ENV_LEAVE_FILENAME='.env.leave'
+AUTOENV_VIEWER='less'
+AUTOENV_ENABLE_LEAVE='yes'
+AUTOENV_ASSUME_YES='yes'
+alias envinit=autoenv_init
+source '/home/login/.nvm/versions/node/v18.13.0/lib/node_modules/@hyperupcall/autoenv/activate.sh'
+alias cde=autoenv_cd
+
+# bun completions
+[ -s "/home/login/.bun/_bun" ] && source "/home/login/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
